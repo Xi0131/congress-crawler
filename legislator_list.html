@@ -1,0 +1,502 @@
+﻿  
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="Ddw0NEeFQlZVhbROtHlU1Hb2GJaiT6Xx2yoUsXmd" />
+    <title>會議隨選 - 立法院 議事轉播 網際網路多媒體隨選視訊(ivod)系統</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="copyright" content="立法院議事轉播網際網路多媒體隨選視訊(ivod)系統" />
+    <meta name="author" content="Fujitsu Taiwan" />
+    <meta name="robots" content="all" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <link rel="shortcut icon" href="https://ivod.ly.gov.tw/images/favicon.ico">
+    <link rel="alternate" hreflang="zh-Hant" href="https://ivod.ly.gov.tw/" />
+    <link href="https://ivod.ly.gov.tw/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="https://ivod.ly.gov.tw/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://ivod.ly.gov.tw/css/app.css" rel="stylesheet">
+    
+</head>
+<script>
+    var mobile = "https://ivod.ly.gov.tw/_partials/mobile";
+</script>
+
+<!-- jQuery -->
+
+<script src="https://ivod.ly.gov.tw/scripts/jquery.min.js"></script>
+<!--[if lt IE 9]><script src="https://ivod.ly.gov.tw/scripts/html5.js"></script><![endif]-->
+<script src="https://ivod.ly.gov.tw/scripts/jquery-ui.min.js"></script>
+<script src="https://ivod.ly.gov.tw/scripts/common.js"></script>
+<script src="https://ivod.ly.gov.tw/scripts/chgFontSize.js"></script>
+
+<script src="https://ivod.ly.gov.tw/scripts/ellipsis.js"></script>
+<script src="https://ivod.ly.gov.tw/scripts/hightlighter.js"></script>
+
+<script src="https://ivod.ly.gov.tw/scripts/clappr.min.js "></script>
+<script src="https://ivod.ly.gov.tw/scripts/can-autoplay.min.js "></script>
+<script src="https://ivod.ly.gov.tw/scripts/clappr-playback-rate-plugin.min.js "></script>
+<script type="text/javascript" src="https://ivod.ly.gov.tw/scripts/sweetalert2.js"></script>    <script src="https://ivod.ly.gov.tw/scripts/legislator.js"></script>
+<body class="ivod-lp">
+<div class="wrapper">
+    <a href="#C" class="goto-main-content" title="跳到主要內容">跳到主要內容</a>
+    <header>
+    <div class="accesskey" style="position:absolute;">
+        <a href="#" accesskey="U" title="上方導覽區塊">:::</a>
+    </div>
+    <!-- logo -->
+    <div class="brand">
+        <h1>
+            <a href="https://ivod.ly.gov.tw/index" title="立法院-議事轉播 ivod 網際網路多媒體隨選視訊系統"><img src="https://ivod.ly.gov.tw/images/ivod-logo.png" alt="立法院-議事轉播 ivod 網際網路多媒體隨選視訊系統"></a>
+        </h1>
+        <noscript>您的瀏覽器不支援script語法，<bar>請按鍵盤上的Ctrl鍵+ (+)鍵放大/(-)鍵縮小來改變字型大小</noscript>
+    </div>
+    <!-- top nav -->
+    <div class="top-nav">
+        <ul>
+            
+            <li><a href="https://ivod.ly.gov.tw/Map" title="網站導覽">網站導覽</a></li>
+            <li><a href="https://ivod.ly.gov.tw/Faq" title="常見問題">常見問題</a></li>
+            <li><a href="https://ivod.ly.gov.tw/News" title="公告事項">公告事項</a></li>
+            
+            <li><a href="https://ivod.ly.gov.tw/Statistics" title="統計資訊">統計資訊</a></li>
+            
+        </ul>
+    </div>
+    <div class="search-wrap">
+        <!-- Font Size -->
+        <div class="fontSize-group" id="chgFontSizeSet">
+            <ul class="chgFontSize">
+                <li><a class="f1" href="javascript:chgFontSize('1');"><em>小</em></a></li>
+                <li class="active"><a class="f2" href="javascript:chgFontSize('2');"><em>中</em></a></li>
+                <li><a class="f3" href="javascript:chgFontSize('3');"><em>大</em></a></li>
+            </ul>
+        </div>
+        <!-- Search -->
+        <form method="get" action="https://ivod.ly.gov.tw/GSearch" name="SearchBoxForm" id="searchForm" class="top-search">
+            
+            <input id="search" 
+                   class="search-bar" 
+                   type="text" 
+                   name="q" 
+                   title="搜尋關鍵字 (快速鍵 Alt+S)" 
+                   placeholder="請輸入關鍵字..."
+                   accesskey="s"
+                   aria-label="搜尋關鍵字輸入框 (快速鍵 Alt+S)"
+                   autocomplete="off">
+            <input type="submit" class="search-btn">
+            <label for="search" class="site-search__icon">
+                <svg class="icon"><use xlink:href="#icon-search"></use></svg>
+            </label>
+        </form>
+    </div>
+</header>    <div class="main">
+        <div class="main-nav main-nav-inside">
+    <ul>
+        <li class="main-nav-a"><a href="https://ivod.ly.gov.tw/Live" title="最新實況"><em>最新實況</em></a></li>
+        <li class="main-nav-b"><a href="https://ivod.ly.gov.tw/Forecast" title="會議預報"><em>會議預報</em></a></li>
+        <li class="main-nav-d"><a href="https://ivod.ly.gov.tw/Demand" title="會議隨選"><em>會議隨選</em></a></li>
+    </ul>
+</div>        <div class="ivod-breadcrumb">
+    <ol class="breadcrumb">
+        <li><a href="https://ivod.ly.gov.tw/index" title="首頁">首頁</a></li>
+        <li><a href="https://ivod.ly.gov.tw/Demand" title="會議隨選">會議隨選</a></li>
+        <li class="active"><a href="https://ivod.ly.gov.tw/Demand">以委員查詢(委員發言片段)</a></li>
+        <li id="crumbs_lglt" style="display:none"></li>
+    </ol>
+</div>
+<div class="page-title">
+    <div class="accesskey">
+        <a href="#" accesskey="L" title="左方導覽區塊">:::</a>
+    </div>
+    <h2><i class="icon-20-tv"></i>會議隨選</h2>
+    <form id = "select_stage_form">
+    <select id="select_stage" name = "targetSession" title="選擇立法委員屆期" aria-label="選擇立法委員屆期">
+        <option  value="lastthree">第8屆立法委員</option>
+        <option  value="lasttwo">第9屆立法委員</option>
+        <option  value="last">第10屆立法委員</option>
+        <option  selected   value="current">第11屆立法委員</option>
+    </select>
+    <h3>委員發言片段係依本院議事人員於委員現場質詢之剪輯影片</h3>
+    </form>
+    <a href="#submenu" id="toggle" title="展開子選單">
+        <span>展開子選單</span>
+    </a>
+    <div id="submenu">
+        <ul>
+            <li>
+                以委員查詢(委員發言片段)
+                <ul class="sub">
+                    <li><a href="javascript:void(0);" onclick="doNavigation('legislator')">依姓名</a></li>
+                    <li><a href="javascript:void(0);" onclick="doNavigation('party')">依黨籍</a></li>
+                    <li><a href="javascript:void(0);" onclick="doNavigation('area')">依選區</a></li>
+                </ul>
+            </li>
+            <li><a href="https://ivod.ly.gov.tw/Demand/ListCommittee">以主辦單位查詢</a></li>
+            <li><a href="https://ivod.ly.gov.tw/Demand/AdvancedSearch">進階查詢</a></li>
+        </ul>
+    </div>
+</div>
+<!--main-content-->
+
+
+    <div class="contents">
+        <!-- legislator-nav -->
+        <div class="contents-nav legislator-nav">
+            <ul>
+                <li>
+                    <a href="https://ivod.ly.gov.tw/Demand" title="以委員查詢(委員發言片段)">以委員查詢(委員發言片段)</a>
+                    <ul id="vod_menu">
+                        <li class="active"><a href="javascript:void(0);" onclick="doNavigation('legislator')" title="依姓名">依姓名</a></li>
+                        <li><a href="javascript:void(0);" onclick="doNavigation('party')" title="依黨籍">依黨籍</a></li>
+                        <li><a href="javascript:void(0);" onclick="doNavigation('area')" title="依選區">依選區</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://ivod.ly.gov.tw/Demand/ListCommittee" title="以主辦單位查詢">以主辦單位查詢</a></li>
+                <li><a href="https://ivod.ly.gov.tw/Demand/AdvancedSearch" title="進階查詢">進階查詢</a></li>
+            </ul>
+            <ul>
+                <noscript>
+                    <p>依姓名</p>
+                    <p>第11屆立法委員名單</p>
+                    <p>依中文姓名筆劃排序</p>
+                    <form method="post" action="http://ivod.ly.gov.tw/Legislator/AEMovieByLglt" target="_blank">
+                        <label for="current-legislators">選擇立法委員：</label>
+                        <select id="current-legislators" name="lgltid">
+                                                            <option VALUE=6889>丁學忠</option>
+                                                            <option VALUE=6939>牛煦庭</option>
+                                                            <option VALUE=6940>王世堅</option>
+                                                            <option VALUE=6942>王正旭</option>
+                                                            <option VALUE=6945>王育敏</option>
+                                                            <option VALUE=6941>王定宇</option>
+                                                            <option VALUE=6943>王美惠</option>
+                                                            <option VALUE=6944>王義川</option>
+                                                            <option VALUE=6946>王鴻薇</option>
+                                                            <option VALUE=6890>伍麗華Saidhai Tahovecahe</option>
+                                                            <option VALUE=6931>江啟臣</option>
+                                                            <option VALUE=6891>何欣純</option>
+                                                            <option VALUE=6897>吳沛憶</option>
+                                                            <option VALUE=6894>吳宗憲</option>
+                                                            <option VALUE=6899>吳秉叡</option>
+                                                            <option VALUE=6895>吳思瑤</option>
+                                                            <option VALUE=6898>吳琪銘</option>
+                                                            <option VALUE=6900>呂玉玲</option>
+                                                            <option VALUE=6911>李坤城</option>
+                                                            <option VALUE=6913>李昆澤</option>
+                                                            <option VALUE=6912>李彥秀</option>
+                                                            <option VALUE=6914>李柏毅</option>
+                                                            <option VALUE=6932>沈伯洋</option>
+                                                            <option VALUE=6933>沈發惠</option>
+                                                            <option VALUE=6923>林月琴</option>
+                                                            <option VALUE=6925>林沛祥</option>
+                                                            <option VALUE=6918>林宜瑾</option>
+                                                            <option VALUE=6919>林岱樺</option>
+                                                            <option VALUE=6915>林俊憲</option>
+                                                            <option VALUE=6921>林思銘</option>
+                                                            <option VALUE=6916>林倩綺</option>
+                                                            <option VALUE=6917>林國成</option>
+                                                            <option VALUE=6926>林淑芬</option>
+                                                            <option VALUE=6924>林楚茵</option>
+                                                            <option VALUE=6920>林德福</option>
+                                                            <option VALUE=6922>林憶君</option>
+                                                            <option VALUE=6969>邱志偉</option>
+                                                            <option VALUE=6970>邱若華</option>
+                                                            <option VALUE=6972>邱鎮軍</option>
+                                                            <option VALUE=6971>邱議瑩</option>
+                                                            <option VALUE=6928>柯志恩</option>
+                                                            <option VALUE=6927>柯建銘</option>
+                                                            <option VALUE=6934>洪孟楷</option>
+                                                            <option VALUE=6953>范雲</option>
+                                                            <option VALUE=6909>徐巧芯</option>
+                                                            <option VALUE=6910>徐欣瑩</option>
+                                                            <option VALUE=6908>徐富癸</option>
+                                                            <option VALUE=6936>涂權吉</option>
+                                                            <option VALUE=6952>翁曉玲</option>
+                                                            <option VALUE=6993>馬文君</option>
+                                                            <option VALUE=6994>高金素梅</option>
+                                                            <option VALUE=6905>張宏陸</option>
+                                                            <option VALUE=6903>張啓楷</option>
+                                                            <option VALUE=6906>張智倫</option>
+                                                            <option VALUE=6907>張雅琳</option>
+                                                            <option VALUE=6904>張嘉郡</option>
+                                                            <option VALUE=6954>莊瑞雄</option>
+                                                            <option VALUE=6962>許宇甄</option>
+                                                            <option VALUE=6963>許智傑</option>
+                                                            <option VALUE=6974>郭昱晴</option>
+                                                            <option VALUE=6973>郭國文</option>
+                                                            <option VALUE=6983>陳永康</option>
+                                                            <option VALUE=6984>陳玉珍</option>
+                                                            <option VALUE=6986>陳秀寳</option>
+                                                            <option VALUE=6978>陳亭妃</option>
+                                                            <option VALUE=6979>陳俊宇</option>
+                                                            <option VALUE=6980>陳冠廷</option>
+                                                            <option VALUE=6982>陳昭姿</option>
+                                                            <option VALUE=6987>陳素月</option>
+                                                            <option VALUE=6981>陳培瑜</option>
+                                                            <option VALUE=6990>陳雪生</option>
+                                                            <option VALUE=6988>陳菁徽</option>
+                                                            <option VALUE=6989>陳超明</option>
+                                                            <option VALUE=6985>陳瑩</option>
+                                                            <option VALUE=6996>麥玉珍</option>
+                                                            <option VALUE=6892>傅崐萁</option>
+                                                            <option VALUE=6938>游顥</option>
+                                                            <option VALUE=6997>黃仁</option>
+                                                            <option VALUE=7003>黃秀芳</option>
+                                                            <option VALUE=7000>黃建賓</option>
+                                                            <option VALUE=7002>黃珊珊</option>
+                                                            <option VALUE=6998>黃健豪</option>
+                                                            <option VALUE=6999>黃國昌</option>
+                                                            <option VALUE=7001>黃捷</option>
+                                                            <option VALUE=6929>楊曜</option>
+                                                            <option VALUE=6930>楊瓊瓔</option>
+                                                            <option VALUE=6955>萬美玲</option>
+                                                            <option VALUE=6956>葉元之</option>
+                                                            <option VALUE=6957>葛如鈞</option>
+                                                            <option VALUE=6902>廖先翔</option>
+                                                            <option VALUE=6901>廖偉翔</option>
+                                                            <option VALUE=6893>劉建國</option>
+                                                            <option VALUE=7004>劉書彬</option>
+                                                            <option VALUE=6958>蔡其昌</option>
+                                                            <option VALUE=6959>蔡易餘</option>
+                                                            <option VALUE=6975>鄭天財Sra Kacaw</option>
+                                                            <option VALUE=6976>鄭正鈐</option>
+                                                            <option VALUE=6995>魯明哲</option>
+                                                            <option VALUE=6947>盧縣一</option>
+                                                            <option VALUE=6966>賴士葆</option>
+                                                            <option VALUE=6967>賴惠員</option>
+                                                            <option VALUE=6968>賴瑞隆</option>
+                                                            <option VALUE=6964>謝衣鳯</option>
+                                                            <option VALUE=6965>謝龍介</option>
+                                                            <option VALUE=6977>鍾佳濱</option>
+                                                            <option VALUE=6991>韓國瑜</option>
+                                                            <option VALUE=6992>顏寬恒</option>
+                                                            <option VALUE=6948>羅廷瑋</option>
+                                                            <option VALUE=6949>羅明才</option>
+                                                            <option VALUE=6951>羅美玲</option>
+                                                            <option VALUE=6950>羅智強</option>
+                                                            <option VALUE=6960>蘇巧慧</option>
+                                                            <option VALUE=6961>蘇清泉</option>
+                                                    </select>
+                        <input type="hidden" name="page" value="1">
+                        <input type="submit" value="搜尋">
+                    </form>
+                    <p> </p>
+                    <p>離職立法委員名單</p>
+                    <p>依中文姓名筆劃排序</p>
+                    <form method="post" action="http://ivod.ly.gov.tw/Legislator/AEMovieByLglt" target="_blank">
+                        <label for="former-legislators">選擇離職立法委員：</label>
+                        <select id="former-legislators" name="lgltid">
+                                                            <option VALUE=6896>吳春城</option>
+                                                            <option VALUE=6820>洪申翰</option>
+                                                            <option VALUE=6937>游錫堃</option>
+                                                    </select>
+                        <input type="hidden" name="page" value="1">
+                        <input type="submit" value="搜尋">
+                    </form>
+                </noscript>
+            </ul>
+        </div>
+        <div class="contents-body legislator-list">
+            <div class="accesskey">
+                <a href="#" accesskey="C" title="中央內容區塊">:::</a>
+            </div>
+            <!-- [Contents Start] -->
+            <h4>第11屆立法委員名單</h4>
+            <p>依中文姓名筆劃排序</p>
+            <noscript>
+                <p>如看到這行訊息,表示您的瀏覽器並未支援javascript,因此以下的委員訊息,請參考左列的搜尋條件。</p>
+            </noscript>
+                                        <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6889">丁學忠</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6939">牛煦庭</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6940">王世堅</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6942">王正旭</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6945">王育敏</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6941">王定宇</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6943">王美惠</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6944">王義川</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6946">王鴻薇</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6890">伍麗華Saidhai Tahovecahe</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6931">江啟臣</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6891">何欣純</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6897">吳沛憶</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6894">吳宗憲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6899">吳秉叡</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6895">吳思瑤</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6898">吳琪銘</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6900">呂玉玲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6911">李坤城</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6913">李昆澤</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6912">李彥秀</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6914">李柏毅</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6932">沈伯洋</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6933">沈發惠</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6923">林月琴</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6925">林沛祥</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6918">林宜瑾</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6919">林岱樺</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6915">林俊憲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6921">林思銘</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6916">林倩綺</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6917">林國成</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6926">林淑芬</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6924">林楚茵</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6920">林德福</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6922">林憶君</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6969">邱志偉</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6970">邱若華</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6972">邱鎮軍</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6971">邱議瑩</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6928">柯志恩</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6927">柯建銘</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6934">洪孟楷</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6953">范雲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6909">徐巧芯</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6910">徐欣瑩</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6908">徐富癸</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6936">涂權吉</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6952">翁曉玲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6993">馬文君</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6994">高金素梅</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6905">張宏陸</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6903">張啓楷</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6906">張智倫</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6907">張雅琳</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6904">張嘉郡</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6954">莊瑞雄</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6962">許宇甄</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6963">許智傑</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6974">郭昱晴</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6973">郭國文</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6983">陳永康</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6984">陳玉珍</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6986">陳秀寳</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6978">陳亭妃</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6979">陳俊宇</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6980">陳冠廷</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6982">陳昭姿</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6987">陳素月</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6981">陳培瑜</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6990">陳雪生</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6988">陳菁徽</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6989">陳超明</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6985">陳瑩</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6996">麥玉珍</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6892">傅崐萁</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6938">游顥</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6997">黃仁</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/7003">黃秀芳</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/7000">黃建賓</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/7002">黃珊珊</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6998">黃健豪</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6999">黃國昌</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/7001">黃捷</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6929">楊曜</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6930">楊瓊瓔</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6955">萬美玲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6956">葉元之</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6957">葛如鈞</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6902">廖先翔</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6901">廖偉翔</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6893">劉建國</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/7004">劉書彬</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6958">蔡其昌</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6959">蔡易餘</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6975">鄭天財Sra Kacaw</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6976">鄭正鈐</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6995">魯明哲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6947">盧縣一</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6966">賴士葆</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6967">賴惠員</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6968">賴瑞隆</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6964">謝衣鳯</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6965">謝龍介</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6977">鍾佳濱</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6991">韓國瑜</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6992">顏寬恒</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6948">羅廷瑋</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6949">羅明才</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6951">羅美玲</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6950">羅智強</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6960">蘇巧慧</a></li>
+                            </ul>
+                                                    <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6961">蘇清泉</a></li>
+                            </ul>
+                                    
+            <h4>離職立法委員名單</h4>
+            <p>依中文姓名筆劃排序</p>
+                                        <ul class="table-list">
+                                <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6896">吳春城</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6820">洪申翰</a></li>
+                                                        <li><a href="https://ivod.ly.gov.tw/Demand/ListLgltVideo/6937">游錫堃</a></li>
+                            </ul>
+                                    
+            
+        </div>
+        <div class="contents-body legislator-nameDetail" style="display:none">
+            <div class="accesskey">
+                <a href="#" accesskey="C" title="中央內容區塊">:::</a>
+            </div>
+            <!-- [Contents Start] -->
+            <p class="results-info"><span class="name"></span> 委員 質詢片段: <span class="number"></span> 筆影片資料</p>
+            <div class="clip-list">
+                <ul id="clipUl"></ul>
+            </div>
+            <div class="ivod-pagination" id="ivod-pagination"></div>
+        </div>
+    </div>
+
+<!--end main-content-->
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="footer-text">
+            <p>地址：(100220)台北市中正區中山南路1號 電話：(02)2358-5858</p>
+            <!-- <p>建議瀏覽環境：IE 9.0、Firefox 24或Chrome 28以上 解析度1024x768以上</p> -->
+            <p>網站瀏覽次數：<span class="counter">36893365</span></p>
+        </div>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="https://ivod.ly.gov.tw/Link" title="相關連結">相關連結</a></li>
+                <li><a href="https://www.ly.gov.tw/Pages/List.aspx?nodeid=10771" title="隱私權政策">隱私權政策</a></li>
+                <li><a href="https://ivod.ly.gov.tw/Copyright" title="著作權聲明">著作權聲明</a></li>
+                <li><a href="https://www.ly.gov.tw/Pages/List.aspx?nodeid=10770" title="資訊安全政策">資訊安全政策</a></li>
+                <li><a href="https://ivod.ly.gov.tw/Manual" title="使用手冊">使用手冊</a></li>
+                <li><a target="_blank" href="https://www.ly.gov.tw/Pages/List.aspx?nodeid=216" title="立法院網站技術建言（另開視窗）">立法院網站技術建言</a></li>
+            </ul>
+        </div>
+        <!-- <div class="footer-Copyright">
+            <p><a target="_blank" href="https://www.ly.gov.tw/Pages/List.aspx?nodeid=216" title="立法院網站技術建言">立法院網站技術建言</a> Copyright © 2017 中華民國立法院. All rights reserved</p>
+        </div> -->
+    </div>
+</footer></body>
+</html>
