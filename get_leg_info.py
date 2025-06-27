@@ -56,26 +56,34 @@ for legislator in legislator_list:
         
         # iterate through clips
         for clip in clips:
+            
+            # goto video page
             video_link = clip.find_all('a')[0].get('href')
             print(video_link)
 
             video_page_link = requests.get(BASEURL + video_link, headers=headers, verify=False)
             video_page = BeautifulSoup(video_page_link.text, "html.parser")
 
+            # process video
             video_link_script = video_page.find_all('script', type="text/javascript")[1]
-            print(video_link_script)
             video_source_link = re.search(r'readyPlayer\("([^"]+)"', video_link_script.text)
             m3u8_url = video_source_link[1]
             output_file = "legislative_meeting.mp4"
-            print(video_source_link[1])
+            print(m3u8_url)
 
-            subprocess.run([
-                "ffmpeg",
-                "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
-                "-i", m3u8_url,
-                "-c", "copy",
-                output_file
-            ])
+            # subprocess.run([
+            #     "ffmpeg",
+            #     "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
+            #     "-i", m3u8_url,
+            #     "-c", "copy",
+            #     output_file
+            # ])
+
+            # process video text
+            context = video_page.find('div', class_="video-text").find_all('p')
+            for con in context:
+                print(con.text)
+            # print(context)
 
             exit()
             sleep(1)
