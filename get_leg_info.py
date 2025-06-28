@@ -17,10 +17,7 @@ BASEURL = 'https://ivod.ly.gov.tw'
 
 legislator_list = []
 with open('legislators.json', 'r', encoding='utf-8') as input:
-    # print(input.read())
     legislator_list = json.loads(input.read())
-
-# print(legislator_list)
 
 headers = {"User-Agent": "Mozilla/5.0"}
 for legislator in legislator_list:
@@ -99,8 +96,8 @@ for legislator in legislator_list:
             
             # set paths
             legislator_dir      = f'委員資料夾/{legislator_name}'
-            clip_dir           = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time}'
-            clip_output_file   = f"{clip_dir}/videoClip.mp4"
+            clip_dir            = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time}'
+            clip_output_file    = f"{clip_dir}/videoClip.mp4"
             json_output_file    = f"{clip_dir}/metaData.json"
             record_output_file  = f"{clip_dir}/record.txt"
             
@@ -139,7 +136,7 @@ for legislator in legislator_list:
                 with open(record_output_file, 'w', encoding='utf-8') as rout:
                     rout.write(record.text)
 
-            exit()
+            # exit()
             sleep(1)
         
         sleep(1)
