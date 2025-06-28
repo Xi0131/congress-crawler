@@ -117,6 +117,8 @@ for legislator in legislator_list:
             m3u8_url = clip_source_link[1]
             print('clip link:', m3u8_url)
 
+            #########################################################
+            # UNCOMMENT THIS
             # subprocess.run([
             #     "ffmpeg",
             #     "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
@@ -124,6 +126,7 @@ for legislator in legislator_list:
             #     "-c", "copy",
             #     clip_output_file
             # ])
+            #########################################################
 
             with open(json_output_file, 'w', encoding='utf-8') as jout:
                 jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
@@ -133,11 +136,9 @@ for legislator in legislator_list:
             if record_sublink != '':
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
                 record = BeautifulSoup(record_link.text, "html.parser")
-                # print(record)
                 with open(record_output_file, 'w', encoding='utf-8') as rout:
                     rout.write(record.text)
 
-            # exit()
             sleep(1)
         
         sleep(1)
