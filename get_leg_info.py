@@ -49,7 +49,7 @@ for legislator in legislator_list:
 
     # iterate through pages
     query_url = legislator['url'] + '?page='
-    for i in range(2, total_pages + 1):
+    for i in range(1, total_pages + 1):
         print('page:', i)
         page_link = requests.get(query_url + str(i), headers=headers, verify=False)
         page = BeautifulSoup(page_link.text, "html.parser")
@@ -68,10 +68,10 @@ for legislator in legislator_list:
             
             context = clip_info.find_all('p')
             legislator_name = re.search(r'委員：\s*(.+)', context[0].text)[1]
-            speaking_time = re.search(r'委員發言時間：\s*(.+)', context[1].text)[1]
-            video_length = re.search(r'影片長度：\s*(.+)', context[2].text)[1]
-            meeting_time = re.search(r'會議時間：\s*(.+)', context[3].text)[1]
-            meeting_name = re.search(r'會議名稱：\s*(.+)', context[4].text)[1]
+            speaking_time   = re.search(r'委員發言時間：\s*(.+)', context[1].text)[1]
+            clip_length    = re.search(r'影片長度：\s*(.+)', context[2].text)[1].replace(':', '')
+            meeting_time    = re.search(r'會議時間：\s*(.+)', context[3].text)[1].replace(' ', '_').replace(':', '')
+            meeting_name    = re.search(r'會議名稱：\s*(.+)', context[4].text)[1]
             
             clip_links = context[5].find_all('a')
             gazette_link, record_sublink, related_info = '', '', ''
@@ -83,62 +83,63 @@ for legislator in legislator_list:
                 elif a.text == '會議相關資料':
                     meeting_info = a.get('href')
             
-            video_data = {
+            clip_data = {
                 "主辦單位" : organizer,
                 "會期" : f'第{term}屆第{session}會期',
                 "委員名稱" : legislator_name,
                 "委員發言時間" : speaking_time,
-                "影片長度" : video_length,
+                "影片長度" : clip_length,
                 "會議時間" : meeting_time,
                 "會議名稱" : meeting_name,
                 "公報連結" : gazette_link,
                 "發言紀錄" : BASEURL + record_sublink,
                 "會議相關資料" : meeting_info
             }
-            print(video_data)
+            print('clip data:', clip_data)
             
             # set paths
             legislator_dir      = f'委員資料夾/{legislator_name}'
-            video_dir           = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time.replace(" ", "_").replace(":", "")}'
-            video_output_file   = f"{video_dir}/videoClip.mp4"
-            json_output_file    = f"{video_dir}/metaData.json"
-            record_output_file  = f"{video_dir}/record.txt"
+            clip_dir           = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time}'
+            clip_output_file   = f"{clip_dir}/videoClip.mp4"
+            json_output_file    = f"{clip_dir}/metaData.json"
+            record_output_file  = f"{clip_dir}/record.txt"
             
-            if not os.path.exists(video_dir):
-                os.makedirs(video_dir)
+            if not os.path.exists(clip_dir):
+                os.makedirs(clip_dir)
 
-            # goto video page
-            video_link = clip.find_all('a')[0].get('href')
-            print(video_link)
-            video_page_link = requests.get(BASEURL + video_link, headers=headers, verify=False)
-            video_page = BeautifulSoup(video_page_link.text, "html.parser")
+            # goto clip page
+            clip_page_link = clip.find_all('a')[0].get('href')
+            print('clip page link:', clip_page_link)
+            clip_page_link = requests.get(BASEURL + clip_page_link, headers=headers, verify=False)
+            clip_page = BeautifulSoup(clip_page_link.text, "html.parser")
             
-            # process video
-            video_link_script = video_page.find_all('script', type="text/javascript")[1]
-            video_source_link = re.search(r'readyPlayer\("([^"]+)"', video_link_script.text)
-            m3u8_url = video_source_link[1]
-            print(m3u8_url)
+            # process clip
+            clip_link_script = clip_page.find_all('script', type="text/javascript")[1]
+            clip_source_link = re.search(r'readyPlayer\("([^"]+)"', clip_link_script.text)
+            m3u8_url = clip_source_link[1]
+            print('clip link:', m3u8_url)
 
-            subprocess.run([
-                "ffmpeg",
-                "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
-                "-i", m3u8_url,
-                "-c", "copy",
-                video_output_file
-            ])
+            # subprocess.run([
+            #     "ffmpeg",
+            #     "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
+            #     "-i", m3u8_url,
+            #     "-c", "copy",
+            #     clip_output_file
+            # ])
 
             with open(json_output_file, 'w', encoding='utf-8') as jout:
-                jout.write(json.dumps(video_data, ensure_ascii=False, indent=4))
+                jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
 
             sleep(1)
             
             if record_sublink != '':
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
                 record = BeautifulSoup(record_link.text, "html.parser")
-                print(record)
+                # print(record)
                 with open(record_output_file, 'w', encoding='utf-8') as rout:
                     rout.write(record.text)
 
+            exit()
             sleep(1)
         
         sleep(1)
