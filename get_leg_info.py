@@ -97,21 +97,21 @@ for legislator in legislator_list:
             }
             print(video_data)
             
-            exit()
+            # set paths
+            legislator_dir      = f'委員資料夾/{legislator_name}'
+            video_dir           = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time.replace(' ', '_').replace(':', '')}'
+            video_output_file   = f"{video_dir}/videoClip.mp4"
+            json_output_file    = f"{video_dir}/metaData.json"
+            record_output_file  = f"{video_dir}/record.txt"
             
+            if not os.path.exists(video_dir):
+                os.makedirs(video_dir)
+
             # goto video page
             video_link = clip.find_all('a')[0].get('href')
             print(video_link)
             video_page_link = requests.get(BASEURL + video_link, headers=headers, verify=False)
             video_page = BeautifulSoup(video_page_link.text, "html.parser")
-
-            legislator_dir = f'委員資料夾/{legislator_name}'
-            video_dir = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time.replace(' ', '_').replace(':', '')}'
-            video_output_file = f"{video_dir}/videoClip.mp4"
-            json_output_file  = f"{video_dir}/metaData.json"
-            
-            if not os.path.exists(video_dir):
-                os.makedirs(video_dir)
             
             # process video
             video_link_script = video_page.find_all('script', type="text/javascript")[1]
@@ -129,6 +129,15 @@ for legislator in legislator_list:
 
             with open(json_output_file, 'w', encoding='utf-8') as jout:
                 jout.write(json.dumps(video_data, ensure_ascii=False, indent=4))
+
+            sleep(1)
+            
+            if record_sublink != '':
+                record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
+                record = BeautifulSoup(record_link.text, "html.parser")
+                print(record)
+                with open(record_output_file, 'w', encoding='utf-8') as rout:
+                    rout.write(record.text)
 
             sleep(1)
         
