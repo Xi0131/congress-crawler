@@ -30,6 +30,7 @@ for legislator in legislator_list:
     total, page_size, = None, None
     total_pages = None
     for script in script_tags:
+        
         if "var total" in script.text:
             total_match = re.search(r'var total = "(.*?)";', script.string)
             page_size_match = re.search(r'var pageSize = "(.*?)";', script.string)
@@ -59,14 +60,14 @@ for legislator in legislator_list:
             # process clip info
             clip_info = clip.find('div', class_="clip-list-text")
             title = clip_info.find('h5').text
-            term = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[1]
-            session = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[2]
-            organizer = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[3]
+            term        = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[1]
+            session     = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[2]
+            organizer   = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[3]
             
             context = clip_info.find_all('p')
             legislator_name = re.search(r'委員：\s*(.+)', context[0].text)[1]
             speaking_time   = re.search(r'委員發言時間：\s*(.+)', context[1].text)[1]
-            clip_length    = re.search(r'影片長度：\s*(.+)', context[2].text)[1].replace(':', '')
+            clip_length     = re.search(r'影片長度：\s*(.+)', context[2].text)[1].replace(':', '')
             meeting_time    = re.search(r'會議時間：\s*(.+)', context[3].text)[1].replace(' ', '_').replace(':', '')
             meeting_name    = re.search(r'會議名稱：\s*(.+)', context[4].text)[1]
             
