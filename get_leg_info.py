@@ -13,7 +13,7 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #####################################################################
 
-BASEURL = 'https://ivod.ly.gov.tw/'
+BASEURL = 'https://ivod.ly.gov.tw'
 
 legislator_list = []
 with open('legislators.json', 'r', encoding='utf-8') as input:
@@ -49,7 +49,7 @@ for legislator in legislator_list:
 
     # iterate through pages
     query_url = legislator['url'] + '?page='
-    for i in range(1, total_pages + 1):
+    for i in range(2, total_pages + 1):
         print('page:', i)
         page_link = requests.get(query_url + str(i), headers=headers, verify=False)
         page = BeautifulSoup(page_link.text, "html.parser")
@@ -59,33 +59,51 @@ for legislator in legislator_list:
         # iterate through clips
         for clip in clips:
             
-            # goto video page
-            video_link = clip.find_all('a')[0].get('href')
-            print(video_link)
-
-            video_page_link = requests.get(BASEURL + video_link, headers=headers, verify=False)
-            video_page = BeautifulSoup(video_page_link.text, "html.parser")
-
-            # process video info
-            context = video_page.find('div', class_="video-text").find_all('p')
-            host = re.search(r'主辦單位 ：(.+)', video_page.find('div', class_="video-text").find('h4').text)[1]
-            session = context[3].text.replace(' ', '')
-            legislator_name = re.search(r'委員名稱：\s*(.+)', context[4].text)[1]
-            speaking_time = re.search(r'委員發言時間：\s*(.+)', context[5].text)[1]
-            video_length = re.search(r'影片長度：\s*(.+)', context[6].text)[1]
-            meeting_time = re.search(r'會議時間：\s*(.+)', context[7].text)[1]
-            meeting_name = re.search(r'會議名稱：\s*(.+)', context[8].text)[1]
-            meeting_info = context[9].find('a').get('href')
+            # process clip info
+            clip_info = clip.find('div', class_="clip-list-text")
+            title = clip_info.find('h5').text
+            term = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[1]
+            session = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[2]
+            organizer = re.search(r"第(\d+)屆\s+第(\d+)會期\s*?主辦單位：\s*(\S+)", title)[3]
+            
+            context = clip_info.find_all('p')
+            legislator_name = re.search(r'委員：\s*(.+)', context[0].text)[1]
+            speaking_time = re.search(r'委員發言時間：\s*(.+)', context[1].text)[1]
+            video_length = re.search(r'影片長度：\s*(.+)', context[2].text)[1]
+            meeting_time = re.search(r'會議時間：\s*(.+)', context[3].text)[1]
+            meeting_name = re.search(r'會議名稱：\s*(.+)', context[4].text)[1]
+            
+            clip_links = context[5].find_all('a')
+            gazette_link, record_sublink, related_info = '', '', ''
+            for a in clip_links:
+                if a.text == '公報連結':
+                    gazette_link = a.get('href')
+                elif a.text == '發言紀錄':
+                    record_sublink = re.search(r"window\.open\('([^']+)'", a.get('href'))[1]
+                elif a.text == '會議相關資料':
+                    meeting_info = a.get('href')
+            
             video_data = {
-                "主辦單位" : host,
-                "會期" : session,
+                "主辦單位" : organizer,
+                "會期" : f'第{term}屆第{session}會期',
                 "委員名稱" : legislator_name,
                 "委員發言時間" : speaking_time,
                 "影片長度" : video_length,
                 "會議時間" : meeting_time,
                 "會議名稱" : meeting_name,
+                "公報連結" : gazette_link,
+                "發言紀錄" : BASEURL + record_sublink,
                 "會議相關資料" : meeting_info
             }
+            print(video_data)
+            
+            exit()
+            
+            # goto video page
+            video_link = clip.find_all('a')[0].get('href')
+            print(video_link)
+            video_page_link = requests.get(BASEURL + video_link, headers=headers, verify=False)
+            video_page = BeautifulSoup(video_page_link.text, "html.parser")
 
             legislator_dir = f'委員資料夾/{legislator_name}'
             video_dir = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time.replace(' ', '_').replace(':', '')}'
