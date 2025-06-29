@@ -97,7 +97,7 @@ for legislator in legislator_list:
             
             # set paths
             legislator_dir      = f'委員資料夾/{legislator_name}'
-            clip_dir            = f'{legislator_dir}/{session}_{legislator_name}_{meeting_time}'
+            clip_dir            = f'{legislator_dir}/第{term}屆第{session}會期_{legislator_name}_{meeting_time}_{clip_length}'
             clip_output_file    = f"{clip_dir}/videoClip.mp4"
             json_output_file    = f"{clip_dir}/metaData.json"
             record_output_file  = f"{clip_dir}/record.txt"
