@@ -117,7 +117,7 @@ for legislator in legislator_list:
             # set paths
             dir_suffix          = re.match(r'(\d{6})-(\d{6})', speaking_time)[1]
             legislator_dir      = f'委員資料夾/{legislator_name}'
-            clip_dir            = f'{legislator_dir}/第{term}屆第{session}會期_{legislator_name}_{meeting_time}_{clip_length}'
+            clip_dir            = f'{legislator_dir}/第{term}屆第{session}會期_{legislator_name}_{meeting_time}_{dir_suffix}'
             clip_output_file    = f"{clip_dir}/videoClip.mp4"
             json_output_file    = f"{clip_dir}/metaData.json"
             record_output_file  = f"{clip_dir}/record.txt"
@@ -153,9 +153,10 @@ for legislator in legislator_list:
                     "-c", "copy",
                     clip_output_file
                 ])
+                sleep(10)
+            else:
+                print('Clip exists, skipping')
             #########################################################
-
-            sleep(10)
             
             if record_sublink != '' and not os.path.exists(record_output_file):
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
