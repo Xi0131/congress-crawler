@@ -152,9 +152,10 @@ for legislator in legislator_list:
                     "-c", "copy",
                     clip_output_file
                 ])
+                sleep(10)
+            else:
+                print('Clip exists, skipping')
             #########################################################
-
-            sleep(10)
             
             if record_sublink != '' and not os.path.exists(record_output_file):
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
