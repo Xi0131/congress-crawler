@@ -13,6 +13,25 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #####################################################################
 
+def is_complete_mp4(file_path):
+    try:
+        result = subprocess.run(
+            [
+                "ffprobe", "-v", "error",
+                "-show_entries", "format=duration",
+                "-of", "default=noprint_wrappers=1:nokey=1",
+                file_path
+            ],
+            capture_output=True,
+            text=True
+        )
+        duration_str = result.stdout.strip()
+        duration = float(duration_str)
+        return duration > 0
+    except Exception:
+        # ffprobe failed: likely no moov atom or corrupt file
+        return False
+
 BASEURL = 'https://ivod.ly.gov.tw'
 
 legislator_list = []
@@ -105,11 +124,17 @@ for legislator in legislator_list:
             if not os.path.exists(clip_dir):
                 os.makedirs(clip_dir)
 
+            if not os.path.exists(json_output_file):
+                with open(json_output_file, 'w', encoding='utf-8') as jout:
+                    jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
+
             # goto clip page
             clip_page_link = clip.find_all('a')[0].get('href')
             print('clip page link:', clip_page_link)
             clip_page_link = requests.get(BASEURL + clip_page_link, headers=headers, verify=False)
             clip_page = BeautifulSoup(clip_page_link.text, "html.parser")
+
+            sleep(3)
             
             # process clip
             clip_link_script = clip_page.find_all('script', type="text/javascript")[1]
@@ -119,7 +144,7 @@ for legislator in legislator_list:
 
             #########################################################
             # UNCOMMENT THIS
-            if not os.path.exists(clip_output_file):
+            if not os.path.exists(clip_output_file) or not is_complete_mp4(clip_output_file):
                 subprocess.run([
                     "ffmpeg",
                     "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
@@ -128,10 +153,6 @@ for legislator in legislator_list:
                     clip_output_file
                 ])
             #########################################################
-
-            if not os.path.exists(json_output_file):
-                with open(json_output_file, 'w', encoding='utf-8') as jout:
-                    jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
 
             sleep(10)
             
