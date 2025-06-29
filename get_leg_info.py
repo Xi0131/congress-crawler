@@ -119,26 +119,28 @@ for legislator in legislator_list:
 
             #########################################################
             # UNCOMMENT THIS
-            # subprocess.run([
-            #     "ffmpeg",
-            #     "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
-            #     "-i", m3u8_url,
-            #     "-c", "copy",
-            #     clip_output_file
-            # ])
+            if not os.path.exists(clip_output_file):
+                subprocess.run([
+                    "ffmpeg",
+                    "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
+                    "-i", m3u8_url,
+                    "-c", "copy",
+                    clip_output_file
+                ])
             #########################################################
 
-            with open(json_output_file, 'w', encoding='utf-8') as jout:
-                jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
+            if not os.path.exists(json_output_file):
+                with open(json_output_file, 'w', encoding='utf-8') as jout:
+                    jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
 
-            sleep(1)
+            sleep(10)
             
-            if record_sublink != '':
+            if record_sublink != '' and not os.path.exists(record_output_file):
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
                 record = BeautifulSoup(record_link.text, "html.parser")
                 with open(record_output_file, 'w', encoding='utf-8') as rout:
                     rout.write(record.text)
 
-            sleep(1)
+            sleep(5)
         
-        sleep(1)
+        sleep(5)
