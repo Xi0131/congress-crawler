@@ -9,14 +9,17 @@ def rename_parent_dir_if_metadata_exists(base_path, rename_func):
             parent_dir_path = root
             parent_dir_name = os.path.basename(parent_dir_path)
             grandparent_dir = os.path.dirname(parent_dir_path)
+            
+            print('Processing:', parent_dir_name)
+            
             data = None
-            with open(os.path.join(parent_dir_path, files[0]), 'r', encoding='utf-8') as metaData:
+            with open(os.path.join(parent_dir_path, 'metaData.json'), 'r', encoding='utf-8') as metaData:
                 input = metaData.read()
                 data = json.loads(input)
 
             # change and write the new format
             data["委員發言時間"] = data["委員發言時間"].replace(':', '').replace(' ', '')
-            with open(os.path.join(parent_dir_path, files[0]), 'w', encoding='utf-8') as new_metaData:
+            with open(os.path.join(parent_dir_path, 'metaData.json'), 'w', encoding='utf-8') as new_metaData:
                 json.dump(data, new_metaData, ensure_ascii=False, indent=4)
 
             suffix = re.match(r'(\d{6})-(\d{6})', data["委員發言時間"])[1]

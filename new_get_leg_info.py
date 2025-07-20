@@ -6,6 +6,13 @@ import math
 from time import sleep
 import subprocess
 import os
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--name', type=str, help='Skip until this legislator')
+args = parser.parse_args()
+start_leg = args.name
+skip_flag = True
 
 #####################################################################
 # 關閉 SSL 警告
@@ -61,6 +68,15 @@ for legislator in legislator_list:
                 break
 
     print('legislator:', legislator['legislator'])
+
+    if start_leg == None:
+        skip_flag = False
+    elif start_leg == legislator['legislator']:
+        skip_flag = False
+    elif skip_flag == True:
+        print('skipping')
+        continue
+
     print('total_pages:', total_pages)
     sleep(1)
 
@@ -129,41 +145,37 @@ for legislator in legislator_list:
                 with open(json_output_file, 'w', encoding='utf-8') as jout:
                     jout.write(json.dumps(clip_data, ensure_ascii=False, indent=4))
 
-            # goto clip page
-            clip_page_link = clip.find_all('a')[0].get('href')
-            print('clip page link:', clip_page_link)
-            clip_page_link = requests.get(BASEURL + clip_page_link, headers=headers, verify=False)
-            clip_page = BeautifulSoup(clip_page_link.text, "html.parser")
-
-            sleep(3)
-            
-            # process clip
-            clip_link_script = clip_page.find_all('script', type="text/javascript")[1]
-            clip_source_link = re.search(r'readyPlayer\("([^"]+)"', clip_link_script.text)
-            m3u8_url = clip_source_link[1]
-            print('clip link:', m3u8_url)
-
-            #########################################################
-            # UNCOMMENT THIS
             if not os.path.exists(clip_output_file) or not is_complete_mp4(clip_output_file):
+                # goto clip page
+                clip_page_link = clip.find_all('a')[0].get('href')
+                print('clip page link:', clip_page_link)
+                clip_page_link = requests.get(BASEURL + clip_page_link, headers=headers, verify=False)
+                clip_page = BeautifulSoup(clip_page_link.text, "html.parser")
+                sleep(3)
+            
+                # process clip
+                clip_link_script = clip_page.find_all('script', type="text/javascript")[1]
+                clip_source_link = re.search(r'readyPlayer\("([^"]+)"', clip_link_script.text)
+                m3u8_url = clip_source_link[1]
+                print('clip link:', m3u8_url)
+
                 subprocess.run([
                     "ffmpeg",
-                    "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
+                    "-headers", "Referer: https://ivod.ly.gov.tw/\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n",
+                    "-re",
                     "-i", m3u8_url,
                     "-c", "copy",
+                    "-y",
                     clip_output_file
                 ])
                 sleep(10)
             else:
-                print('Clip exists, skipping')
-            #########################################################
+                print('clip exists, skipping')
             
             if record_sublink != '' and not os.path.exists(record_output_file):
                 record_link = requests.get(BASEURL + record_sublink, headers=headers, verify=False)
                 record = BeautifulSoup(record_link.text, "html.parser")
                 with open(record_output_file, 'w', encoding='utf-8') as rout:
                     rout.write(record.text)
-
-            sleep(5)
         
         sleep(5)

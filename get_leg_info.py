@@ -147,7 +147,7 @@ for legislator in legislator_list:
             if not os.path.exists(clip_output_file) or not is_complete_mp4(clip_output_file):
                 subprocess.run([
                     "ffmpeg",
-                    "-headers", "Referer: https://ivod.ly.gov.tw/\r\n",
+                    "-headers", "Referer: https://ivod.ly.gov.tw/\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n",
                     "-i", m3u8_url,
                     "-c", "copy",
                     clip_output_file
